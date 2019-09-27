@@ -1,0 +1,39 @@
+﻿html, body {
+    height:100%;
+    font:normal normal 15px arial;
+}
+.flex-login-container
+{
+    display:flex;
+    align-items:center;
+    align-content:center;
+    justify-content:center;
+}
+.flex-login-items
+{
+    flex:1;
+}
+.flex-login-items:first-child {
+    
+}
+.status-success
+{
+    color:green;
+    font-weight:bold;
+}
+.status-failure {
+    color: red;
+    font-weight: bold;
+}
+.status-defult {
+    color: black;
+    font-weight: bold;
+}
+.flex-form-container
+{
+    display:flex;
+}
+.flex-form-items
+{
+    flex:1
+}

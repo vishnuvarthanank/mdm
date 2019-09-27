@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Management Of Master Data</title>
+
+    <link href="Styles/app.css" rel="stylesheet" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/app.js"></script>
+    <script src="Scripts/Services/user-service.js"></script>
+</head>
+<body ng-controller="myCtrl">
+    <hr />
+    <div class="flex-login-container">
+        <div class="flex-login-items">
+            <table cellpadding="5">
+                <tr>
+                    <td><h2 style="padding:0px;margin:0px">Login</h2></td>
+                </tr>
+                <tr>
+                    <td>User Name</td>
+                    <td><input type="text" name="username" ng-model="username" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" ng-model="password" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right"><input type="button" name="validate" value="Login" ng-click="login()" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="flex-login-items">
+            <h1 ng-class="loginStatusClass">{{StatusMsg}}</h1> &nbsp;&nbsp;<input type="button" value="Logout" ng-if="isAuthenticatd == '1'" ng-click="logout()" />
+        </div>
+    </div>
+    <hr />
+    <div ng-if="isAuthenticatd == '1'">
+        <div class="flex-form-container">
+            <div class="flex-form-items">
+                <table cellpadding="5">
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="name" ng-model="user.Name" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="rpassword" ng-model="user.Password" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" name="email" ng-model="user.Email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td>
+                            <select ng-model="user.sDepartment" ng-options="department.ID as department.Name for department in Departments">
+                                <option value="">-Select-</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right"><input type="button" name="validate" value="Register" ng-click="register()" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="flex-form-items">
+                <table width="100%" cellspacing="1" cellpadding="3" style="background-color:silver">
+                    <tr>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Department</td>
+                    </tr>
+                    <tr style="background-color:white" ng-repeat="user in users">
+                        <td>{{ user.Name }}</td>
+                        <td>{{ user.Email }}</td>
+                        <td>{{ user.departName }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <hr />
+        <div class="flex-form-container">
+            <div class="flex-form-items"><input type="button" name="validate" value="Save Multiple Record" ng-click="multipleUser()" /></div>
+            <div class="flex-form-items">
+                <table width="100%" cellspacing="1" cellpadding="3" style="background-color:silver">
+                    <tr>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Department</td>
+                    </tr>
+                    <tr style="background-color:white" ng-repeat="user in users">
+                        <td>{{ user.Name }}</td>
+                        <td>{{ user.Email }}</td>
+                        <td>{{ user.departName }}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
